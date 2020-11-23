@@ -1,0 +1,52 @@
+body {
+    text-align: center;
+    background-color:  #e6f5ff;
+}
+div {
+    display: inline-block;
+}
+.matrix {
+    padding-top: 20vh;
+}
+button {
+    display: inline-block;
+    padding: 15px 25px;
+    border-radius: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 3px 6px black;
+    border: none;
+    color: aliceblue;
+    outline: none;
+    background: linear-gradient(90deg, rgba(58,116,180,1) 0%, rgba(29,248,253,1) 50%, rgba(69,156,252,1) 100%);
+    box-shadow: 2px 3px 4px 4px rgba(0, 0, 0, 0.6);
+    margin-top: 60px;
+}
+button:hover {
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(70,252,216,0.865983893557423) 100%);
+    transition: 100ms;
+}
+#table {
+    display: block;
+    margin-top: 60px;
+    border-radius: 5px;
+    width: 100%;
+}
+th, td {
+    border: 1px solid dimgrey;
+    padding: 7px 14px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+    border-radius: 3px;
+    font-size: 18px;
+    font-family: Tahoma;
+    box-shadow: 3px 2px 3px rgba(0, 0, 0, 0.7);
+    width: 10%;
+}
+@media screen and (max-width: 768px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
