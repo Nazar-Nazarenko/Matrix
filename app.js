@@ -7,19 +7,38 @@ let m = 2;
 
 let masArray = [];
 
-for (let i = 0; i <= m; i++) {
-    let sellSum = 0;
-    masArray[i] = [];
+callTable();
 
-    for (let j = 0; j <= n; j++) {
+function callTable() {
+    for (let i = 0; i <= m; i++) {
+        let sellSum = 0;
+        masArray[i] = [];
 
-        masArray[i][j] = Math.floor(Math.random() * 30 + 100);
-        j === n ? masArray[i][j] = sellSum : sellSum += masArray[i][j];
-        // i === m ? masArray[j][i] = sellSum : sellSum += masArray[j][i] / m;
+        for (let j = 0; j <= n; j++) {
+
+            let result = masArray[i][j] = Math.floor(Math.random() * 30 + 100);
+            console.log(result);
+            j === n ? masArray[i][j] = sellSum : sellSum += masArray[i][j];
+        }
+
     }
+    cellCall();
 }
 
+function cellCall() {
+    for (let j = 0; j <= n; j++) {
+        let sellSum = 0;
+        for (let i = 0; i <= m; i++) {
 
+            if (i === m) {
+                masArray[i][j] = sellSum;
+            } else {
+                sellSum += masArray[i][j] / m;
+            }
+        }
+
+    }
+}
 
 
 getButton.addEventListener('click', () => {
