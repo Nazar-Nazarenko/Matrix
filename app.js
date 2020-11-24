@@ -1,9 +1,8 @@
-let getButton = document.querySelector(".open");
-let myTable = document.querySelector("#table");
+const startButton = document.querySelector(".open");
+const myTable = document.querySelector("#table");
 
 let n = 4;
 let m = 2;
-
 
 let masArray = [];
 
@@ -16,16 +15,19 @@ function callTable() {
 
         for (let j = 0; j <= n; j++) {
 
-            let result = masArray[i][j] = Math.floor(Math.random() * 30 + 100);
-            console.log(result);
-            j === n ? masArray[i][j] = sellSum : sellSum += masArray[i][j];
+            masArray[i][j] = Math.floor(Math.random() * 30 + 100);
+            if (j === n) {
+                masArray[i][j] = sellSum;
+            } else {
+                sellSum += masArray[i][j];
+            }
         }
 
     }
-    cellCall();
+    sumColumn();
 }
 
-function cellCall() {
+function sumColumn() {
     for (let j = 0; j <= n; j++) {
         let sellSum = 0;
         for (let i = 0; i <= m; i++) {
@@ -41,21 +43,39 @@ function cellCall() {
 }
 
 
-getButton.addEventListener('click', () => {
-    let table = document.createElement('table');
-    masArray.forEach(int => {
-        let row = document.createElement('tr');
+startButton.addEventListener('click', () => {
+    openTable();
+    startButton.remove();
 
-        Object.values(int).forEach(text => {
-            let cell = document.createElement('td');
-            cell.innerText = text + '';
+});
+function openTable() {
+    const table = document.createElement('table');
+    masArray.forEach(rowValues => {
+        const row = document.createElement('tr');
+
+        rowValues.forEach(cellValue => {
+            const cell = document.createElement('td');
+            cell.innerText = cellValue;
             row.appendChild(cell);
-        })
+            cell.addEventListener('click', handleCellClick);
+            });
+
+
         table.appendChild(row);
     });
 
     myTable.appendChild(table);
 
-});
+}
 
 
+function  handleCellClick() {
+
+    ++this.innerText;
+
+    const cellList =this.parentElement.querySelectorAll('td');
+    const lastCell = cellList[cellList.length - 1];
+
+    lastCell.innerText++;
+
+}
